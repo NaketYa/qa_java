@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
@@ -24,6 +25,7 @@ public class LionTest {
     @Test
     public void testGetKittens() throws Exception {
         Lion lion = new Lion("Самец", feline);
+        Mockito.when(feline.getKittens()).thenReturn(0);
         int expectedCount = 0;
         int actualCount = lion.getKittens();
         Assert.assertEquals(expectedCount, actualCount);
@@ -33,6 +35,7 @@ public class LionTest {
     public void testGetFood() throws Exception {
         Lion lion = new Lion("Самка", feline);
         List<String> expectedFood = Arrays.asList();
+        Mockito.when(feline.getFood("Хищник")).thenReturn(expectedFood);
         List<String> actualFood = lion.getFood();
         Assert.assertEquals(expectedFood, actualFood);
     }
