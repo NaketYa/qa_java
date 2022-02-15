@@ -8,7 +8,7 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class LionParameterizedTest {
 
-    private static Object feline;
+    private static Feline feline;
     private final String sex;
     private final boolean expectedHasMane;
 
@@ -27,7 +27,7 @@ public class LionParameterizedTest {
 
     @Test
     public void testDoesHaveMane() throws Exception {
-        Lion lion = new Lion(sex, (Feline) feline);
+        Lion lion = new Lion(sex, feline);
         boolean actualHasMane = lion.doesHaveMane();
         Assert.assertEquals(actualHasMane, expectedHasMane);
     }
